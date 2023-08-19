@@ -1,7 +1,7 @@
 import numpy as np
 import requests
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing.image import img_to_array
+from keras.models import load_model
+from keras.preprocessing.image import img_to_array
 from PIL import Image
 import io
 

@@ -7,22 +7,19 @@ import time
 import os
 
 np.set_printoptions(suppress=True)
-model = load_model('model.h5')
+model = load_model('model.keras')
 
 
-class_names = ["diamond","dolphin","orange","other"]
-
+class_names = ["car", "food", "other"]
 
 
 def predict(path):
-    with open(path,"rb") as f:
-        imageb =  f.read()
+    with open(path, "rb") as f:
+        imageb = f.read()
     img = img_to_array(Image.open(io.BytesIO(imageb)))
     img = np.expand_dims(img, axis=0)
     prediction = model.predict(img)
     return class_names[np.argmax(prediction, axis=1)[0]]
-
-
 
 
 if __name__ == '__main__':

@@ -6,8 +6,8 @@ import os
 
 dataset_dir = "./dataset/"
 image_dimensions = (128, 128)
-batch_size = 32
-epochs = 100
+batch_size = 16
+epochs = 50
 learning_rate = 0.001
 
 train = ImageDataGenerator(rescale=1/255)

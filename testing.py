@@ -10,7 +10,7 @@ np.set_printoptions(suppress=True)
 model = load_model('model.keras')
 
 
-class_names = ["car", "food", "other"]
+class_names = ['animal with four legs', 'other']
 
 
 def predict(path):
@@ -18,8 +18,13 @@ def predict(path):
         imageb = f.read()
     img = img_to_array(Image.open(io.BytesIO(imageb)))
     img = np.expand_dims(img, axis=0)
-    prediction = model.predict(img)
-    return class_names[np.argmax(prediction, axis=1)[0]]
+
+    try:
+        prediction = model.predict(img)
+        return class_names[np.argmax(prediction, axis=1)[0]]
+    except Exception as e:
+        print(e)
+        return "error"
 
 
 if __name__ == '__main__':
